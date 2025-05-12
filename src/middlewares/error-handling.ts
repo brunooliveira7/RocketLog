@@ -8,7 +8,7 @@ export function errorHandling(
   response: Response,
   next: NextFunction
 ) {
-  //tratamento de exceção do AppError
+  //tratamento de exceção interno do servidor
   if (error instanceof AppError) {
     return response.status(error.statusCode).json({
       message: error.message,
