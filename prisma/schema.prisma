@@ -6,3 +6,66 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+//defini o tipo de usuário - permissão de acesso - role
+enum UserRole {
+  customer
+  sale
+}
+
+enum DeliveryStatus {
+  processing
+  shipped
+  delivered
+}
+
+//cria a tabela de usuários
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String
+  password String
+
+  //por padrão todo usuário é um cliente - role - função/papel
+  role UserRole @default(customer)
+
+  //relacionamento - um usuário pode ter vários pedidos - []
+  delivery Delivery[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at") // ? = opcional e @updatedAt = atualiza a data de atualização
+
+  @@map("users") //nome da tabela no banco de dados
+}
+
+model Delivery {
+  id          String @id @default(uuid())
+  userId      String @map("user_id")
+  description String
+
+  //todo pedido é classificado como processing
+  status DeliveryStatus @default(processing)
+
+  //relacionamento de chave estrangeira entre as tabelas - user
+  user User @relation(fields: [userId], references: [id])
+  //relacionamento - um pedido pode ter vários logs - []
+  logs DeliveryLog[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("deliveries")
+}
+
+model DeliveryLog {
+  id          String @id @default(uuid())
+  description String
+  deliveryId  String @map("delivery_id")
+
+  delivery    Delivery @relation(fields: [deliveryId], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("delivery_logs")
+}
