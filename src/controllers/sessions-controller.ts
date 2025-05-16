@@ -42,7 +42,10 @@ class SessionsController {
       expiresIn,
     });
 
-    return response.json({ token });
+    //chamando a senha hashedPassword. Desestruturando a senha cripto do usuário - separa.
+    const { password: hashedPassword, ...userWithoutPassword } = user;
+
+    return response.json({ token, user: userWithoutPassword });
   }
 }
 
