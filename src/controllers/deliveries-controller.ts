@@ -22,6 +22,14 @@ class DeliveriesController {
 
     return response.status(201).json();
   }
+
+  //listar todas as entregas
+  async index(request: Request, response: Response) {
+    //recupera todas - findMandy - as entregas
+    const deliveries = await prisma.delivery.findMany();
+
+    return response.json(deliveries);
+  }
 }
 
 export { DeliveriesController };
