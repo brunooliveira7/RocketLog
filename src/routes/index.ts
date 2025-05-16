@@ -6,7 +6,6 @@ import { sessionsRoutes } from "./sessions-routes";
 const routes = Router();
 
 routes.use("/users", usersRoutes);
-
 routes.use("/sessions", sessionsRoutes);
 
 export { routes };
