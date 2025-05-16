@@ -26,7 +26,12 @@ class DeliveriesController {
   //listar todas as entregas
   async index(request: Request, response: Response) {
     //recupera todas - findMandy - as entregas
-    const deliveries = await prisma.delivery.findMany();
+    const deliveries = await prisma.delivery.findMany({
+      //retorna o nome e email do usuário que fez o pedido - insomnia
+      include: {
+        user: { select: { name: true, email: true } }, 
+      },
+    });
 
     return response.json(deliveries);
   }
