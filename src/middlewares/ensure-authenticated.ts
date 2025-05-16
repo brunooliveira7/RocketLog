@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import e, { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import { authConfig } from "@/configs/auth";
 import { AppError } from "@/utils/AppError";
@@ -42,3 +42,5 @@ function ensureAuthenticated(
     throw new AppError("Invalid JWT token", 401);
   }
 }
+
+export { ensureAuthenticated };
