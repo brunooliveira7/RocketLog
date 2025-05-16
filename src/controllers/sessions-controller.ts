@@ -6,7 +6,7 @@ import { compare } from "bcrypt";
 import { authConfig } from "@/configs/auth";
 import { sign } from "jsonwebtoken";
 
-//autenticação do usuário que está no banco de dados
+//controla as rotas de autenticação do login do usuário  
 class SessionsController {
   async create(request: Request, response: Response) {
     const bodySchema = z.object({

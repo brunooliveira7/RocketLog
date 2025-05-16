@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "@/utils/AppError";
 
-//verifica se os usuários estão autorizados a acessar a rota
+//verifica se os usuários estão autorizados a acessar a rota pela role
 function verifyUserAuthorization(role: string[]) {
   return (request: Request, response: Response, next: NextFunction) => {
     //verifica se o usuário está autenticado
