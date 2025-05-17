@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import { prisma } from "@/database/prisma";
 import { AppError } from "@/utils/AppError";
+import { log } from "console";
 
 //rota para criar um novo registro de log de entrega
 class DeliveryLogsController {
@@ -50,9 +51,14 @@ class DeliveryLogsController {
 
     const { delivery_id } = paramsSchema.parse(request.params);
 
+    //extrai as informações da entrega e os logs de entrega
     const delivery = await prisma.delivery.findUnique({
       where: {
         id: delivery_id,
+      },
+      include: {
+        user: true,
+        logs: true,
       },
     });
 
