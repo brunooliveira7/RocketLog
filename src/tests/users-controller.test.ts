@@ -14,7 +14,7 @@ describe("Users Controller", () => {
       },
     });
   });
-  
+
   //teste para criar um novo usuário
   it("should create a new user", async () => {
     //variável para armazenar o id do usuário criado do teste
@@ -35,5 +35,19 @@ describe("Users Controller", () => {
 
     //
     user_id = response.body.id;
+  });
+  //teste para cadastrar um usuário com email já existente
+  it("should throw an error if user whit email already existe", async () => {
+    //fazer uma requisição POST para a rota /users com os dados do usuário para cadastrar
+    const response = await request(app).post("/users").send({
+      name: "Duplicate User",
+      email: "testuser@example.com",
+      password: "password123",
+    });
+
+    //verificar se a resposta tem o status 400 (bad request) - igual userController.ts
+    expect(response.status).toBe(400);
+    //verificar se o corpo da resposta contém a mensagem de erro esperada
+    expect(response.body.message).toBe("User with same email already exists");
   });
 });
