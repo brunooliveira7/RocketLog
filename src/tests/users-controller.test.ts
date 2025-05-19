@@ -37,7 +37,7 @@ describe("Users Controller", () => {
     user_id = response.body.id;
   });
   //teste para cadastrar um usuário com email já existente
-  it("should throw an error if user whit email already existe", async () => {
+  it("should throw an error if user with same email already exists", async () => {
     //fazer uma requisição POST para a rota /users com os dados do usuário para cadastrar
     const response = await request(app).post("/users").send({
       name: "Duplicate User",
