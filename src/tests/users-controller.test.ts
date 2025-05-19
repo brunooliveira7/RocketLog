@@ -50,4 +50,19 @@ describe("Users Controller", () => {
     //verificar se o corpo da resposta contém a mensagem de erro esperada
     expect(response.body.message).toBe("User with same email already exists");
   });
+
+  //teste validar email
+  it("should throw a validation error if email is invalid", async () => {
+    //fazer uma requisição POST para a rota /users com os dados do usuário para cadastrar
+    const response = await request(app).post("/users").send({
+      name: "Test User",
+      email: "invalid-email",
+      password: "password123",
+    });
+
+    //verificar se a resposta tem o status 400 (bad request) - igual userController.ts
+    expect(response.status).toBe(400);
+    //verificar se o corpo da resposta contém a mensagem de erro esperada
+    expect(response.body.message).toBe("Validation error");
+  });
 });
