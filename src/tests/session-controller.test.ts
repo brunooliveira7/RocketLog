@@ -5,6 +5,15 @@ import { prisma } from "@/database/prisma";
 describe("Session Controller", () => {
   let user_id: string;
 
+  //depois do teste deleta o usuário
+  afterAll(async () => {
+    await prisma.user.delete({
+      where: {
+        id: user_id,
+      },
+    });
+  });
+
   //teste de login e geração do token
   it("should authenticate a and get access token", async () => {
     //cria um usuário
