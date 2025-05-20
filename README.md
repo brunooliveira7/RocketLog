@@ -6,7 +6,7 @@ Este projeto consiste no desenvolvimento de uma **API RESTful** para gerenciamen
 
 ## 🚀 Funcionalidades
 
-- ✅ Cadastro e autenticação de **usuários** (clientes e vendedores);
+- ✅ Cadastro com autenticação e validação de **usuários** (clientes e vendedores);
 - ✅ Criação de **pedidos de entrega**;
 - ✅ Atualização de **status** do pedido:
   - `processing`
