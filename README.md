@@ -20,13 +20,17 @@ Este projeto consiste no desenvolvimento de uma **API RESTful** para gerenciamen
 ---
 
 ## 📁 Organização das Rotas
-Método,	Rota, e Descrição
-- POST,	/users,	Criação de usuários
-- POST,	/sessions,	Autenticação de usuários
-- POST,	/deliveries,	Criação de pedidos de entrega
-- GET,	/delivery-logs,	Listagem de logs de entregas
-- PATCH, /deliveries/:id/status,	Atualização de status da entrega
-- GET,	/deliveries/:id/show,	Exibição detalhada de uma entrega
+
+A tabela abaixo descreve os principais endpoints da aplicação, incluindo o método HTTP, a rota e sua respectiva funcionalidade:
+
+| Método  | Rota                         | Descrição                              |
+|---------|------------------------------|----------------------------------------|
+| POST    | `/users`                     | Criação de usuários                    |
+| POST    | `/sessions`                  | Autenticação de usuários               |
+| POST    | `/deliveries`                | Criação de pedidos de entrega          |
+| GET     | `/delivery-logs`             | Listagem de logs de entregas           |
+| PATCH   | `/deliveries/:id/status`     | Atualização de status da entrega       |
+| GET     | `/deliveries/:id/show`       | Exibição detalhada de uma entrega      |
 
 ---
 
