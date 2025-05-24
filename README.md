@@ -58,6 +58,6 @@ Node.js
 ---
 
 <p align="center">
-  <img alt="API Restaurant" src="">
+  <img alt="API Restaurant" src="https://github.com/brunooliveira7/RocketLog/blob/main/assets/API%20entregas%20de%20encomendas.png">
 </p>
 
